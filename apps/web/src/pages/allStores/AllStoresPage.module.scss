@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px; /* 간격 추가 */
+  padding: 20px;
+  max-width: 800px; /* 중앙 정렬을 위해 최대 너비 설정 */
+  margin: 0 auto;
+}
+
+.results {
+  width: 100%;
+  margin-top: 16px;
+}
+
+.loading {
+  text-align: center;
+  padding: 20px;
+}
+
+.error {
+  text-align: center;
+  color: red;
+  font-weight: bold;
+}

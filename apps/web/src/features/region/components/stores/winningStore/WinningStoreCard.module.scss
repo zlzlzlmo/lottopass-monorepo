@@ -1,0 +1,72 @@
+.storeCard {
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .ant-card-head-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #1f2937;
+  }
+
+  .placeholder {
+    color: #9ca3af;
+    font-style: italic;
+  }
+
+  p {
+    font-size: 14px;
+    margin: 4px 0;
+    color: #4b5563;
+  }
+
+  .navigateButton {
+    margin-top: 12px;
+  }
+
+  /* 회차 리스트 */
+  .drawContainer {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+    align-items: center;
+  }
+
+  .drawTag {
+    white-space: nowrap;
+    font-size: 12px;
+    line-height: 22px;
+  }
+
+  .moreButton {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 14px;
+    gap: 4px;
+    color: #1890ff;
+
+    &:hover {
+      color: #40a9ff;
+    }
+  }
+
+  .moreText {
+    display: block;
+    font-size: 12px;
+  }
+  .modalContent {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .modalTag {
+    margin-bottom: 5px;
+    font-size: 14px;
+    line-height: 22px;
+  }
+}

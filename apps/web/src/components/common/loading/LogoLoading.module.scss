@@ -1,0 +1,40 @@
+@keyframes wave {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(10deg);
+  }
+  75% {
+    transform: rotate(-10deg);
+  }
+}
+
+.loadingLogo {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #2563eb;
+  display: inline-block;
+  animation: wave 1.5s ease-in-out infinite;
+  transform-origin: bottom center;
+  margin-bottom: 1rem;
+}
+
+.loadingText {
+  font-size: 20px;
+  color: #6b7280;
+}
+
+.loadingContainer {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1312321;
+}
