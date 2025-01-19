@@ -1,15 +1,19 @@
-import { useAllDraws } from "@/features/draw/hooks/useAllDraws";
-import { parseQueryParams } from "@/pages/numberGeneration/components/numberActionButtons/utils";
-import { useSearchParams } from "react-router-dom";
-import { MinMaxGeneratorByRank } from "@/utils/combinationGenerator/minMaxGeneratorByRank/minMaxGeneratorByRank";
-import { PopupType } from "@/components/popup/PopupManager";
-import { ConfirmType } from "@/pages/numberGeneration/components/numberActionButtons/NumberActionButtons";
-import { SelectedGenerator } from "@/utils/combinationGenerator/selectedGenerator/selectedGenerator";
-import { DrawMinCountGenerator } from "@/utils/combinationGenerator/drawMinCountGenerator/drawMinCountGeneractor";
-import { MinMaxGenerator } from "@/utils/combinationGenerator/minMaxGenerator/minMaxGenerator";
-import { EvenOddGenerator } from "@/utils/combinationGenerator/evenOddGenerator/evenOddGenerator";
-import { useEffect, useState } from "react";
-import { LottoDraw } from "lottopass-shared";
+import { useAllDraws } from '@/features/draw/hooks/useAllDraws';
+import { parseQueryParams } from '@/pages/numberGeneration/components/numberActionButtons/utils';
+import { useSearchParams } from 'react-router-dom';
+import { MinMaxGeneratorByRank } from '@/utils/combinationGenerator/minMaxGeneratorByRank/minMaxGeneratorByRank';
+import { PopupType } from '@/components/popup/PopupManager';
+import { ConfirmType } from '@/pages/numberGeneration/components/numberActionButtons/NumberActionButtons';
+
+import { useEffect, useState } from 'react';
+import { LottoDraw } from 'lottopass-shared';
+
+import {
+  DrawMinCountGenerator,
+  EvenOddGenerator,
+  MinMaxGenerator,
+  SelectedGenerator,
+} from '@lottopass/shared-utils';
 
 export interface QueryParams {
   selectedNumbers?: number[];
@@ -50,9 +54,9 @@ export const useGenerateNumbers = ({
   } = queryParams;
 
   const getCombinationByConfirmType = (
-    param: Record<ConfirmType, number[]>
+    param: Record<ConfirmType, number[]>,
   ): number[] => {
-    if (confirmType === "require") return param.require;
+    if (confirmType === 'require') return param.require;
     return param.exclude;
   };
 
@@ -62,7 +66,7 @@ export const useGenerateNumbers = ({
     let result: number[] = [];
 
     // 필수, 제외번호 직접 선택
-    if (type === "numberSelect" && selectedNumbers) {
+    if (type === 'numberSelect' && selectedNumbers) {
       const generator = new SelectedGenerator(filteredDraws);
       const require = generator.getRequiredNumbers(selectedNumbers);
       const exclude = generator.getExcludedNumbers(selectedNumbers);
@@ -70,18 +74,18 @@ export const useGenerateNumbers = ({
     }
 
     // 최근 N 회차 최소 K 갯수 선택 (출현, 미출현)
-    if (type === "numberControl" && drawCount && minCount) {
+    if (type === 'numberControl' && drawCount && minCount) {
       const generator = new DrawMinCountGenerator(filteredDraws);
       const require = generator.getRandomCombinationWithMinCount(
         drawCount,
-        minCount
+        minCount,
       );
       const exclude = generator.getRandomUnappearedNumbers(drawCount, minCount);
       result = getCombinationByConfirmType({ require, exclude });
     }
 
     // 특정 회차 최소 갯수 선택 (출현, 미출현)
-    if (type === "rangeSelect" && min && max) {
+    if (type === 'rangeSelect' && min && max) {
       const generator = new MinMaxGenerator(filteredDraws, min, max);
       const require = generator.generateAppearedNumbers();
       const exclude = generator.generateUnappearedNumbers();
@@ -90,23 +94,23 @@ export const useGenerateNumbers = ({
     }
 
     // 짝수 N개 홀수 K개 조합
-    if (type === "evenOddControl" && even && odd) {
+    if (type === 'evenOddControl' && even && odd) {
       const generator = new EvenOddGenerator(filteredDraws);
       result = generator.generateAppearedNumbers(even, odd);
     }
 
     if (
-      (type === "rangeAndTopNumberSelect" ||
-        type === "rangeAndBottomNumberSelect") &&
+      (type === 'rangeAndTopNumberSelect' ||
+        type === 'rangeAndBottomNumberSelect') &&
       min &&
       max &&
       topNumber
     ) {
       const generator = new MinMaxGeneratorByRank(filteredDraws, min, max);
 
-      if (type === "rangeAndTopNumberSelect")
+      if (type === 'rangeAndTopNumberSelect')
         result = generator.generateTopAppearedNumbers(topNumber);
-      if (type === "rangeAndBottomNumberSelect")
+      if (type === 'rangeAndBottomNumberSelect')
         result = generator.generateBottomAppearedNumbers(topNumber);
     }
 

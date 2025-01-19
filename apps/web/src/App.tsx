@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { ROUTES } from "./constants/routes";
-import "./styles/global.scss";
+import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ROUTES } from './constants/routes';
+import './styles/global.scss';
 
-import { QueryClient, QueryClientProvider } from "react-query";
-import { fetchAllDraws } from "./features/draw/drawSlice";
-import { useAppDispatch } from "./redux/hooks";
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { fetchAllDraws } from './features/draw/drawSlice';
+import { useAppDispatch } from './redux/hooks';
 import {
   AllStoresPage,
   DetailPage,
@@ -16,19 +16,19 @@ import {
   ResultPage,
   StatisticPage,
   WinningStoresPage,
-} from "./pages";
-import ScrollToTop from "./components/common/scroll/ScrollToTop";
-import SimulationNumberGenrationPage from "./pages/simulationNumberGeneration/SimulationNumberGenrationPage";
-import SimulationResultPage from "./pages/result/simulation/SimulationResultPage";
-import SignupPage from "./pages/signup/SignupPage";
-import LoginPage from "./pages/login/LoginPage";
-import AppInitializer from "./AppInitializer";
-import UserProfileUpdatePage from "./pages/auth/UserProfileUpdatePage";
-import MyPage from "./pages/my/MyPage";
-import DeleteAccountPage from "./pages/auth/DeleteAccountPage";
-import FindPasswordPage from "./pages/findPassword/FindPasswordPage";
-import DashboardPage from "./pages/dashboard/DashboardPage";
-import AuthGuard from "./AuthGuard";
+} from './pages';
+import ScrollToTop from './components/common/scroll/ScrollToTop';
+import SimulationNumberGenrationPage from './pages/simulationNumberGeneration/SimulationNumberGenrationPage';
+import SimulationResultPage from './pages/result/simulation/SimulationResultPage';
+import SignupPage from './pages/signup/SignupPage';
+import LoginPage from './pages/login/LoginPage';
+import AppInitializer from './AppInitializer';
+import UserProfileUpdatePage from './pages/auth/UserProfileUpdatePage';
+import MyPage from './pages/my/MyPage';
+import DeleteAccountPage from './pages/auth/DeleteAccountPage';
+import FindPasswordPage from './pages/findPassword/FindPasswordPage';
+import DashboardPage from './pages/dashboard/DashboardPage';
+import AuthGuard from './AuthGuard';
 
 const queryClient = new QueryClient();
 
@@ -83,7 +83,7 @@ const App: React.FC = () => {
         </AuthGuard>
       ),
     },
-    { path: "*", element: <NotFound /> },
+    { path: '*', element: <NotFound /> },
   ];
 
   const dispatch = useAppDispatch();
