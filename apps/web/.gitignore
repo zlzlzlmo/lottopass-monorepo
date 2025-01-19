@@ -35,3 +35,4 @@ localhost-key.pem
 
 *.pem
 *.key
+.vercel
