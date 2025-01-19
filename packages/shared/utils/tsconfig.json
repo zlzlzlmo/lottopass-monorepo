@@ -1,0 +1,12 @@
+{
+  "extends": "../../../tsconfig.json",
+  "compilerOptions": {
+    "declaration": true,
+    "outDir": "dist", // 빌드 출력 경로
+    "moduleResolution": "node",
+    "target": "esnext",
+    "strict": true
+  },
+  "include": ["src/**/*"], // src 디렉토리 아래의 모든 TypeScript 파일 포함
+  "exclude": ["node_modules", "dist", "**/*.test.ts"] // 테스트 파일 및 출력 경로 제외
+}
