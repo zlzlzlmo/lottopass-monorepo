@@ -59,7 +59,8 @@
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.8.1",
     "selenium-webdriver": "^4.27.0",
-    "typeorm": "^0.3.20"
+    "typeorm": "^0.3.20",
+    "lottopass-shared": "github:zlzlzlmo/lottopass-shared#main"
   },
   "devDependencies": {
     "@nestjs/cli": "^10.0.0",
